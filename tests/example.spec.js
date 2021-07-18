@@ -1,4 +1,4 @@
-import{ expect} from 'chai';
+import{ expect } from 'chai';
 
 describe('operations with numbers', function (){
     const a = 5;
