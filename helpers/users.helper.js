@@ -4,6 +4,7 @@ class UsersHelper {
     constructor() {
         this.response = null;
     }
+
     async create(){
         await supertest(process.env.BASE_URL)
             .post('/users')

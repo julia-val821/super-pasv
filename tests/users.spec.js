@@ -3,7 +3,6 @@ import UsersHelper from '../helpers/users.helper';
 import ConfigHelper from '../helpers/config.helper';
 import { getRandomItem } from '../helpers/common.helper';
 
-
 describe('users', function(){
     const configHelper = new ConfigHelper();
 
@@ -46,7 +45,7 @@ describe('users', function(){
         it('response body contains amount', function () {
             expect(usersHelper.response.body.amount).not.to.be.undefined;
         });
-    })
+    });
 
     describe('get all users', function (){
         const usersHelper = new UsersHelper();
@@ -82,7 +81,7 @@ describe('users', function(){
 
         before(async function () {
             await usersHelper.create();
-            await usersHelper.delete(usersHelper.response.bodyid);
+            await usersHelper.delete(usersHelper.response.body.id);
         });
 
         it('response status code is 200', function () {
