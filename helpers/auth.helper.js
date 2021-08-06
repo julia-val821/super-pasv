@@ -4,6 +4,7 @@ class AuthHelper {
     constructor() {
         this.response = null;
     }
+
     async post(login, password) {
           await supertest(process.env.BASE_URL)
             .post('/auth')
@@ -11,7 +12,6 @@ class AuthHelper {
             .then((res) => { this.response = res });
           return this.response;
     }
-
 }
 
 export default AuthHelper;
