@@ -1,0 +1,33 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.1
+
+
+jobs:
+  build-and-test:
+    docker:
+      - image: circleci/node:latest-browsers
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Run tests
+          command: |
+            npm run test:chrome:headless
+
+workflows:
+  commit:
+    jobs:
+      - build-and-test
+
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - build-and-test
